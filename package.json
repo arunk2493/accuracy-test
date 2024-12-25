@@ -1,0 +1,27 @@
+{
+  "name": "accuracy-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "lms load mlx-community/Llama-3.2-3B-Instruct-4bit -y && lms server start",
+    "test": "npx playwright test || npm run posttest || npm run report",
+    "posttest": "lms server stop && lms unload --all",
+    "report": "allure generate allure-results --clean -o allure-report && allure open allure-report"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "@types/node": "^22.10.2",
+    "allure-commandline": "^2.32.0",
+    "allure-playwright": "^3.0.7",
+    "axios": "^1.7.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2",
+    "ws": "^8.18.0"
+  },
+  "dependencies": {
+    "lmstudio": "^0.0.17"
+  }
+}
